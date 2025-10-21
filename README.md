@@ -10,9 +10,19 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+int main() {
+    float length, breadth, area;
+    float *l = &length, *b = &breadth;
+    scanf("%f %f", l, b);
+    area = (*l) * (*b);
+    printf("%.2f\n", area);
+    return 0;
+}
 ## OUTPUT
-		       	
+10 5
+50.00
 
 
 ## RESULT
@@ -34,9 +44,19 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+int main() {
+    char *str = (char *)malloc(8 * sizeof(char));
+    strcpy(str, "WELCOME");
+    printf("%s\n", str);
+    free(str);
+    return 0;
+}
 ## OUTPUT
-
+WELCOME
 
 
 ## RESULT
@@ -60,10 +80,24 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s;
+    scanf("%d %s %f", &s.roll, s.name, &s.marks);
+    printf("%d %s %.2f\n", s.roll, s.name, s.marks);
+    return 0;
+}
 
 ## OUTPUT
-
+101 Aishwarya 89.5
+101 Aishwarya 89.5
 
 ## RESULT
 
@@ -87,10 +121,30 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+struct Employee {
+    int id;
+    char name[50];
+    float basic, hra, da, gross;
+};
+
+int main() {
+    struct Employee e[3];
+    int i;
+    for (i = 0; i < 3; i++)
+        scanf("%d %s %f %f %f", &e[i].id, e[i].name, &e[i].basic, &e[i].hra, &e[i].da);
+    for (i = 0; i < 3; i++) {
+        e[i].gross = e[i].basic + e[i].hra + e[i].da;
+        printf("%d %s %.2f\n", e[i].id, e[i].name, e[i].gross);
+    }
+    return 0;
+}
 
  ## OUTPUT
-
+101 Aishwarya 20000 5000 3000
+102 Ravi 18000 4000 2500
+103 Meena 22000 6000 3500
  
 
 ## RESULT
@@ -134,11 +188,30 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+#include <stdio.h>
 
+struct Student {
+    int marks[5];
+    int total;
+    float average;
+};
+
+int main() {
+    struct Student s;
+    int i;
+    s.total = 0;
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &s.marks[i]);
+        s.total += s.marks[i];
+    }
+    s.average = s.total / 5.0;
+    printf("%d %.2f\n", s.total, s.average);
+    return 0;
+}
 
 ## OUTPUT
-
- 
+80 75 90 85 70
+400 80.00 
 
 ## RESULT
 
